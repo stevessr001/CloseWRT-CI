@@ -369,3 +369,80 @@ CONFIG_WARP_DBG_SUPPORT=y
 CONFIG_WARP_MEMORY_LEAK_DBG=y
 CONFIG_WARP_VERSION=2
 CONFIG_WED_HW_RRO_SUPPORT=y
+
+# ===== 新增：科学插件支持 =====
+
+# --- OpenClash ---
+CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y
+
+# --- PassWall 2 ---
+CONFIG_PACKAGE_luci-app-passwall2=y
+CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria=y
+CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy=y
+
+# --- dae / daed (eBPF 透明代理) ---
+CONFIG_PACKAGE_luci-app-dae=y
+CONFIG_PACKAGE_luci-app-daed=y
+# 根据实际使用的后端选择，luci-app-daede 可统一管理 dae 和 daed
+# CONFIG_PACKAGE_luci-app-daede=y
+
+# --- MentoHUST (锐捷校园网认证) ---
+CONFIG_PACKAGE_luci-app-mentohust=y
+CONFIG_PACKAGE_mentohust=y
+
+# --- eBPF 内核支持 (dae/daed 必需) ---
+CONFIG_DEVEL=y
+CONFIG_BPF_TOOLCHAIN_HOST=y
+# CONFIG_BPF_TOOLCHAIN_NONE is not set
+CONFIG_KERNEL_BPF_EVENTS=y
+CONFIG_KERNEL_CGROUP_BPF=y
+CONFIG_KERNEL_DEBUG_INFO=y
+CONFIG_KERNEL_DEBUG_INFO_BTF=y
+# CONFIG_KERNEL_DEBUG_INFO_REDUCED is not set
+CONFIG_KERNEL_XDP_SOCKETS=y
+
+# --- eBPF 相关内核模块 ---
+CONFIG_PACKAGE_kmod-sched-bpf=y
+CONFIG_PACKAGE_libbpf=y
+
+# --- 额外依赖 (PassWall 2) ---
+CONFIG_PACKAGE_luci-compat=y
+CONFIG_PACKAGE_resolveip=y
+CONFIG_PACKAGE_tcping=y
+
+
+# ===== 内置服务：WireGuard / ZeroTier / SmartDNS / AdGuard Home / qBittorrent / Cloudflared =====
+
+# --- WireGuard ---
+# 注意：luci-app-wireguard 已合并至 luci-proto-wireguard，无需单独启用 luci-app-wireguard
+CONFIG_PACKAGE_kmod-wireguard=y
+CONFIG_PACKAGE_wireguard-tools=y
+CONFIG_PACKAGE_luci-proto-wireguard=y
+
+# --- ZeroTier ---
+CONFIG_PACKAGE_zerotier=y
+CONFIG_PACKAGE_luci-app-zerotier=y
+
+# --- SmartDNS ---
+CONFIG_PACKAGE_smartdns=y
+CONFIG_PACKAGE_luci-app-smartdns=y
+CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=y
+CONFIG_PACKAGE_luci-compat=y
+
+# --- AdGuard Home ---
+CONFIG_PACKAGE_adguardhome=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+
+# --- qBittorrent ---
+CONFIG_PACKAGE_qBittorrent=y
+CONFIG_PACKAGE_luci-app-qbittorrent=y
+CONFIG_PACKAGE_luci-i18n-qbittorrent-zh-cn=y
+
+# --- Cloudflared ---
+CONFIG_PACKAGE_cloudflared=y
+CONFIG_PACKAGE_luci-app-cloudflared=y
+
+
