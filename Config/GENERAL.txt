@@ -467,3 +467,18 @@ CONFIG_PACKAGE_kmod-nft-tproxy=y
 CONFIG_PACKAGE_kmod-tun=y
 CONFIG_PACKAGE_kmod-dummy=y
 
+# ===== 新增：yq / fish / ssh / fastfetch =====
+
+# --- yq (nikki-rs 依赖) ---
+CONFIG_PACKAGE_yq=y
+
+# --- fish shell ---
+CONFIG_PACKAGE_fish=y
+
+# --- SSH (OpenSSH 服务端与客户端) ---
+CONFIG_PACKAGE_openssh-server=y
+CONFIG_PACKAGE_openssh-client=y
+# openssh-keygen 和 openssh-sftp-server 你已启用，无需重复
+
+# --- fastfetch ---
+CONFIG_PACKAGE_fastfetch=y
