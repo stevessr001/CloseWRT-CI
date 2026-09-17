@@ -445,4 +445,25 @@ CONFIG_PACKAGE_luci-i18n-qbittorrent-zh-cn=y
 CONFIG_PACKAGE_cloudflared=y
 CONFIG_PACKAGE_luci-app-cloudflared=y
 
+# ===== 添加 nikki-rs (基于 Rust/clash-rs 的轻量代理插件) =====
+
+# --- 主程序包 ---
+CONFIG_PACKAGE_nikki-rs=y
+
+# --- LuCI 管理界面 ---
+CONFIG_PACKAGE_luci-app-nikki-rs=y
+
+# --- 中文语言包 ---
+CONFIG_PACKAGE_luci-i18n-nikki-rs-zh-cn=y
+
+# --- nikki-rs 依赖项 (检查是否已启用) ---
+CONFIG_PACKAGE_ca-bundle=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_yq=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_kmod-inet-diag=y
+CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
+CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_kmod-dummy=y
 
