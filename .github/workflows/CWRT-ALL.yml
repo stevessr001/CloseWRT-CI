@@ -12,6 +12,15 @@ on:
   #手动编译
   workflow_dispatch:
     inputs:
+      TARGET:
+        description: '选择编译目标：all=一起编译，MT7981/MT7986=二选一'
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - MT7981
+          - MT7986
       PACKAGE:
         description: '手动调整插件包，多个请用\n符号隔开。'
         required: false
@@ -43,14 +52,37 @@ jobs:
           delete_workflows: true
           workflows_keep_day: 0
 
-  config:
+  setup:
     needs: cleanup
+    runs-on: ubuntu-latest
+    outputs:
+      configs: ${{ steps.matrix.outputs.configs }}
+    steps:
+      - name: 生成编译矩阵
+        id: matrix
+        env:
+          TARGET: ${{ github.event_name == 'workflow_dispatch' && inputs.TARGET || 'all' }}
+        run: |
+          case "$TARGET" in
+            MT7981)
+              echo 'configs=["MT7981"]' >> "$GITHUB_OUTPUT"
+              ;;
+            MT7986)
+              echo 'configs=["MT7986"]' >> "$GITHUB_OUTPUT"
+              ;;
+            all|*)
+              echo 'configs=["MT7981","MT7986"]' >> "$GITHUB_OUTPUT"
+              ;;
+          esac
+
+  config:
+    needs: setup
     name: ${{matrix.CONFIG}}
     strategy:
       fail-fast: false
       #max-parallel: 4
       matrix:
-        CONFIG: [MT7981, MT7986]
+        CONFIG: ${{ fromJSON(needs.setup.outputs.configs) }}
         REPO_INFO:
           - {SOURCE: "stevessr001/immortalwrt-mt798x-6.6-padavanonly", BRANCH: "openwrt-24.10-6.6"}
           #- {SOURCE: "chasey-dev/immortalwrt-mt798x-rebase", BRANCH: "25.12"}
