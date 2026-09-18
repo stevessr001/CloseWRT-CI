@@ -86,7 +86,7 @@ UPDATE_PACKAGE "qmodem-generic" "LianXia233/luci-app-qmodem-generic" "main"
 # 补充缺失的第三方源
 UPDATE_PACKAGE "luci-app-wolultra" "VIKINGYFY/packages" "main" "pkg"
 UPDATE_PACKAGE "luci-app-gecoosac" "lyin888/openwrt-gecoosac" "master" "pkg"
-UPDATE_PACKAGE "luci-app-mentohust" "BoringCat/luci-app-mentohust" "master" "pkg"
+UPDATE_PACKAGE "mentohust" "sbwml/luci-app-mentohust" "master"
 UPDATE_PACKAGE "fastfetch" "muink/openwrt-fastfetch" "main" "pkg"
 UPDATE_PACKAGE "luci-app-daede" "kenzok8/openwrt-daede" "main" "pkg"
 
