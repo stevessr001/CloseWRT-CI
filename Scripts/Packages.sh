@@ -83,6 +83,13 @@ UPDATE_PACKAGE "airpi3000m" "LianXia233/luci-app-airpi3000m-fancontrol" "main"
 UPDATE_PACKAGE "h5000m" "LianXia233/luci-app-h5000m-netmode" "main"
 UPDATE_PACKAGE "qmodem-generic" "LianXia233/luci-app-qmodem-generic" "main"
 
+# 补充缺失的第三方源
+UPDATE_PACKAGE "luci-app-wolultra" "VIKINGYFY/packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-gecoosac" "lyin888/openwrt-gecoosac" "master" "pkg"
+UPDATE_PACKAGE "luci-app-mentohust" "BoringCat/luci-app-mentohust" "master" "pkg"
+UPDATE_PACKAGE "fastfetch" "muink/openwrt-fastfetch" "main" "pkg"
+UPDATE_PACKAGE "luci-app-daede" "kenzok8/openwrt-daede" "main" "pkg"
+
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
